@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectorRef,
   Component,
   NgZone,
   OnInit,
@@ -19,6 +18,7 @@ import {
   timer,
 } from 'rxjs';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -38,7 +38,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(
     private galleryService: GalleryService,
     private breakpointObserver: BreakpointObserver,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private _router: Router
   ) {}
 
   getGridCols(): number {
@@ -119,5 +120,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   trackByFn(index: number, item: Photos): string {
     return item.id;
+  }
+
+  onListItemClick(item: Photos) {
+    // Assuming item.id contains the ID needed for navigation
+    this._router.navigate(['/details', item.id]);
   }
 }

@@ -1,0 +1,25 @@
+<div class="background"></div>
+<div class="card-container">
+  <mat-card class="card">
+    <!-- prettier-ignore -->
+    <img
+    mat-card-image
+    src={{imageDetails[0].download_url}}
+    alt="image" />
+    <mat-card-content>
+      <h3><span>Author : </span> {{ imageDetails[0].author }}</h3>
+    </mat-card-content>
+    <mat-card-content>
+      <h3>
+        <span>Dimensions : </span>
+        {{ imageDetails[0].height }} x {{ imageDetails[0].width }}
+      </h3>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button (click)="downloadImage()" color="primary">
+        Download
+      </button>
+      <button mat-button (click)="goBack()" color="warn">Back</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

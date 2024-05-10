@@ -12,6 +12,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [],
@@ -29,6 +30,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ScrollingModule,
     MatProgressSpinnerModule,
     DragDropModule,
+    MatButtonModule,
   ],
 })
 export class MaterialModule {}

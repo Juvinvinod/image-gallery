@@ -1,0 +1,23 @@
+.card { 
+    max-width: 400px;
+    margin: auto;
+  }
+
+.card-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+
+  .background{
+    background-image:linear-gradient(90deg,rgb(166, 226, 226), white);
+    height: 100%;
+    width: 100%;
+    position:absolute;
+  }
+
+  span{
+    font-weight: 700;
+  }
