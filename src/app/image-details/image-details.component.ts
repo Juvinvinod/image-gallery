@@ -23,15 +23,18 @@ export class ImageDetailsComponent implements OnInit {
         this.imageDetails = array.filter(
           (element: Photos) => element.id === id
         );
+      } else {
+        this.goBack(); // if there is no items available in local storage, go back.
       }
     });
-    console.log(this.imageDetails);
   }
 
+  //open a new tab with image for the user to download the image.
   downloadImage() {
     window.open(this.imageDetails[0].download_url, '_blank');
   }
 
+  //go back to the previous page
   goBack() {
     // Navigate back using a relative path
     this._router.navigate(['../']);
