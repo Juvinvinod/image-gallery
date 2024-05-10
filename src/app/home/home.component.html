@@ -1,19 +1,4 @@
-<mat-toolbar color="primary" class="navbar">
-  <div>Image-gallery</div>
-  <div>
-    <mat-button-toggle-group
-      #group="matButtonToggleGroup"
-      value=""
-      [(ngModel)]="displayType">
-      <mat-button-toggle value="grid" aria-label="Text align center">
-        <mat-icon>view_module</mat-icon>
-      </mat-button-toggle>
-      <mat-button-toggle value="list" aria-label="Text align right">
-        <mat-icon>view_list</mat-icon>
-      </mat-button-toggle>
-    </mat-button-toggle-group>
-  </div>
-</mat-toolbar>
+<app-toolbar (viewTypeChange)="onViewTypeChange($event)"></app-toolbar>
 <!-- prettier-ignore -->
 <ng-container *ngIf="displayType === 'grid'; else elseBlock">
     <cdk-virtual-scroll-viewport #scroller [itemSize]="50" class="content">
@@ -34,11 +19,15 @@
     <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
       <mat-list
         *cdkVirtualFor="let item of imageList$ | async; trackBy: trackByFn">
-        <mat-list-item cdkDragLockAxis="x" cdkDrag>
+        <mat-list-item
+          class="example-box"
+          cdkDragLockAxis="x"
+          cdkDrag
+          [cdkDragData]="item">
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
           <img matListItemAvatar [src]="item.download_url" alt="..." />
           <h3 matListItemTitle><span>Author:</span>{{ item.author }}</h3>
-          <h3 matListItemTitle><span>Author:</span>{{ item.id }}</h3>
+          <h3 matListItem><span>Author:</span>{{ item.id }}</h3>
         </mat-list-item>
         <mat-divider></mat-divider>
       </mat-list>

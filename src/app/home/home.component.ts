@@ -12,7 +12,6 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import {
   BehaviorSubject,
-  Observable,
   filter,
   map,
   pairwise,
@@ -39,12 +38,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(
     private galleryService: GalleryService,
     private breakpointObserver: BreakpointObserver,
-    private ngZone: NgZone,
-    private cdr: ChangeDetectorRef
+    private ngZone: NgZone
   ) {}
 
   getGridCols(): number {
     return this.breakpointObserver.isMatched('(max-width: 1024px)') ? 1 : 3;
+  }
+
+  onViewTypeChange(viewType: string) {
+    this.displayType = viewType;
   }
 
   fetchMore() {
@@ -95,15 +97,24 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
 
-  drop(event: CdkDragDrop<Photos, Photos>) {
-    console.log(event);
-    const item = this.imageList$.value[event.currentIndex];
-    this.galleryService.deleteFromLocalStorage(item.id);
-    const updatedList = this.imageList$.value.filter(
-      (_, index) => index !== event.currentIndex
-    );
-    this.imageList$.next(updatedList);
-    console.log(updatedList);
+  drop(event: CdkDragDrop<Photos[]>) {
+    const currentIndex = event.currentIndex;
+    const currentValue = this.imageList$.value;
+    const itemData = event.item.data.id;
+    console.log(itemData);
+    if (itemData >= 0) {
+      // Delete the item from local storage using the ID
+      this.galleryService.deleteFromLocalStorage(itemData);
+
+      // Filter out the item with the matching ID
+      const updatedList = currentValue.filter(item => item.id !== itemData);
+
+      // Update the BehaviorSubject with the filtered list
+      this.imageList$.next(updatedList);
+      console.log(updatedList);
+    } else {
+      console.error('Invalid currentIndex:', currentIndex);
+    }
   }
 
   trackByFn(index: number, item: Photos): string {
