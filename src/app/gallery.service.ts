@@ -11,16 +11,7 @@ export class GalleryService {
   apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
-  //function to get images from the api
-  // getImages(pageNumber: number): Observable<Photos[]> {
-  //   const localItem = this.getFromLocalStorage(pageNumber);
-  //   if (localItem) {
-  //     return localItem;
-  //   } else {
-  //     return this.getDataFromApi(pageNumber);
-  //   }
-  // }
-
+  // slice the page required from local storage and return it
   getFromLocalStorage(pageNumber: number): Photos[] | [] {
     const item = localStorage.getItem('imageList');
     if (item) {
@@ -34,6 +25,7 @@ export class GalleryService {
     }
   }
 
+  // make an api call with the page number required and return the response
   getDataFromApi(pageNumber: number): Observable<Photos[]> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append('page', pageNumber);
@@ -43,6 +35,7 @@ export class GalleryService {
     });
   }
 
+  // check if images are already stored in local storage and store the new response along with old one.
   saveToLocalStorage(res: Photos[]): void {
     let datas = [];
     const item = localStorage.getItem('imageList');
@@ -54,6 +47,7 @@ export class GalleryService {
     localStorage.setItem('imageList', JSON.stringify(datas));
   }
 
+  //check if there is a document with the passed id in local storage and then delete it.
   deleteFromLocalStorage(id: string): void {
     let datas = [];
     const item = localStorage.getItem('imageList');
