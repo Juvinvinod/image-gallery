@@ -19,6 +19,7 @@ import {
 } from 'rxjs';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -39,7 +40,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private galleryService: GalleryService,
     private breakpointObserver: BreakpointObserver,
     private ngZone: NgZone,
-    private _router: Router
+    private _router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   getGridCols(): number {
@@ -113,6 +115,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
       // Update the BehaviorSubject with the filtered list
       this.imageList$.next(updatedList);
       console.log(updatedList);
+      this.snackBar.open('Item deleted!!', 'OK', {
+        duration: 3000,
+      });
     } else {
       console.error('Invalid currentIndex:', currentIndex);
     }

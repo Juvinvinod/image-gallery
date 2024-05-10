@@ -13,6 +13,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -31,6 +32,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatProgressSpinnerModule,
     DragDropModule,
     MatButtonModule,
+    MatSnackBarModule,
   ],
 })
 export class MaterialModule {}
