@@ -11,7 +11,12 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ImageDetailsComponent } from './image-details/image-details.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ToolbarComponent, ImageDetailsComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    ToolbarComponent,
+    ImageDetailsComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, MaterialModule],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
