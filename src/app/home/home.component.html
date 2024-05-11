@@ -25,7 +25,8 @@
           cdkDragLockAxis="x"
           cdkDrag
           [cdkDragData]="item"
-          (click)="onListItemClick(item)">
+          (click)="onListItemClick(item)"
+          cdkDragHandle>
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
           <img matListItemAvatar [src]="item.download_url" alt="..." />
           <h3 matListItemTitle><span>Author:</span>{{ item.author }}</h3>
