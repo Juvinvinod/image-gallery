@@ -6,7 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './toolbar.component.css',
 })
 export class ToolbarComponent {
-  selectedViewType: string = 'list'; //default value to keep button pressed on load
+  selectedViewType: string = 'grid'; //default value to keep button pressed on load
   @Output() viewTypeChange = new EventEmitter<string>();
 
   constructor() {}

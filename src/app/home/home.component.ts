@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(CdkVirtualScrollViewport) scroller!: CdkVirtualScrollViewport; //for infinite scroll
   loading = false; // hide the loader by default
   pageNumber = 1; // page number used for fetching data
-  displayType!: string; // grid or list
+  displayType = 'grid'; // grid or list
   isLargeScreen!: boolean; // to make grid responsive
   imageSubscription!: Subscription;
 
