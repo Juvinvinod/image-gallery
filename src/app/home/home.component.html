@@ -1,7 +1,7 @@
 <app-toolbar (viewTypeChange)="onViewTypeChange($event)"></app-toolbar>
 <!-- prettier-ignore -->
 <ng-container *ngIf="displayType === 'grid'; else elseBlock">
-    <cdk-virtual-scroll-viewport #scroller [itemSize]="25" class="content">
+    <cdk-virtual-scroll-viewport #scroller [itemSize]="50" class="content">
     <mat-grid-list [cols]="getGridCols()" rowHeight="2:1" gutterSize="10px" class="container">
       <mat-grid-tile *cdkVirtualFor="let item of imageList$ | async; trackBy: trackByFn">
         <img mat-card-image [src]="item.download_url" class="tile-image" alt="Image">
