@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ImageDetailsComponent } from './image-details/image-details.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ImageDetailsComponent } from './image-details/image-details.component';
     HomeComponent,
     ToolbarComponent,
     ImageDetailsComponent,
+    NotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, MaterialModule],
   providers: [provideAnimationsAsync()],
